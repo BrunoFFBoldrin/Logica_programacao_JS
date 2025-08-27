@@ -15,6 +15,8 @@ function sortear() {
  let texto = document.getElementById('resultado');
  texto.innerHTML = `<label class="texto__paragrafo">Números sorteados:  ${numSortidos.join(', ')}</label>`;
  console.log(numSortidos); //Validando os numeros sorteados, e sua colocação no array.
+
+ alteraBotao(); //habilita o botão de reiniciar ao gerar os números pela primeira vez.
 }
 }
 
@@ -23,4 +25,25 @@ function obterNumeroAleatorio(min, max){
   max = Math.floor(max);// Arredondando para baixo o valor máximo
 
   return Math.floor(Math.random() * (max - min) + min);// Retornando número aleatório
+
+}
+
+
+function reiniciar(){
+de.innerHTML ='';
+ate.innerHTML ='';
+quantidade.innerHTML ='';
+resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados:  nenhum até agora</label>`;
+alteraBotao();
+}
+
+function alteraBotao(){
+  let botao = document.getElementById('btn-reiniciar');
+  if(botao.classList.contains('container__botao-desabilitado')){
+    botao.classList.remove('container__botao-desabilitado')
+    botao.classList.add('container__botao')
+  }else{
+    botao.classList.remove('container__botao')
+    botao.classList.add('container__botao-desabilitado')
+  }
 }
