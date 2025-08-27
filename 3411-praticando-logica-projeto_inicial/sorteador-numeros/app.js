@@ -2,7 +2,7 @@ function sortear() {
  let quantidade = document.getElementById('quantidade').value; // quantidade de números a sortear
  let de = document.getElementById('de').value; // valor mínimo
  let ate = document.getElementById('ate').value; // valor máximo
- ValidaValor(de, ate, quantidade);
+({de, ate, quantidade} = ValidaValor(de, ate, quantidade));
 
  console.log(`Valores de entrada: Quantidade de numeros ${quantidade}, minimo ${de}, maximo ${ate}`); // valores de entrada anexados.
 
@@ -50,13 +50,14 @@ function alteraBotao(){
 }
 
 function ValidaValor(de, ate, quantidade){
-  valorMinimo = de;
-  valorMaximo = ate;
-  valorQuantidade = quantidade;
-  if(valorQuantidade <= 0){
-    alert('Valor invalido, digite um numero maior que zero');
-    }else if (valorMinimo >= valorMaximo){
-          alert('O valor inicial não pode ser maior que o valor final');
-      return;
+  
+  while(quantidade <= 0 || quantidade > (ate - de + 1) || de >= ate){
+    quantidade = prompt('A quantidade de numeros é invalida, informe um numero maior que zero para gerar o calculo: ')
+    de = prompt('O valor minimo é invalido, informe um numero menor que o valor maximo: ')
+    ate = prompt('O valor maximo é invalido, informe um numero maior que o valor minimo: ')
   }
+  document.getElementById('quantidade').value = quantidade;
+  document.getElementById('de').value = de;
+  document.getElementById('ate').value = ate;
+  return({de, ate, quantidade})
 }
