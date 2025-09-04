@@ -8,12 +8,16 @@ function alterarStatus(id) {
     console.log(nomeJogo.textContent);
 
     if(imgJogo.classList.contains('dashboard__item__img--rented')) {
-        imgJogo.classList.remove('dashboard__item__img--rented');
-        botaoJogo.classList.remove('dashboard__item__button--return');
-        botaoJogo.textContent = 'Alugar';
-    }else {
+        let confirmarAlteracao = confirm(`Você tem certeza que deseja devolver o jogo ${nomeJogo.textContent}?`);
+        if(!confirmarAlteracao) {
+        
         imgJogo.classList.add('dashboard__item__img--rented');
         botaoJogo.classList.add('dashboard__item__button--return');
         botaoJogo.textContent = 'Devolver';
+        }
+    }else {
+        imgJogo.classList.remove('dashboard__item__img--rented');
+        botaoJogo.classList.remove('dashboard__item__button--return');
+        botaoJogo.textContent = 'Alugar';
     }
 }
