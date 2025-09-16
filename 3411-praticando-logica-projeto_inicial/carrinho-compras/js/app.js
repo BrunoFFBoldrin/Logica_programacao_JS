@@ -1,5 +1,21 @@
 
-function carrinhoCompras() {}
+let totalgeral = 0;
+document.getElementById('lista-produtos').innerHTML = '';
+document.getElementById('valor-total').textContent = 'R$ 0';
+
+
+function carrinhoCompras(quantidade,produto,preco) {
+    let carrinho = document.getElementById('lista-produtos')
+    carrinho.innerHTML =carrinho.innerHTML +`      <section class="carrinho__produtos" id="lista-produtos">
+        <section class="carrinho__produtos__produto">
+          <span class="texto-azul">${quantidade}x</span> ${produto} <span class="texto-azul">R$${preco}</span>
+        </section>
+      </section>`
+    let precoTotal = document.getElementById('valor-total')
+    totalgeral = totalgeral + preco;
+    precoTotal.textContent = `R$ ${totalgeral}`
+    
+}
 
 function adicionar(){
 
@@ -20,6 +36,8 @@ function adicionar(){
 
     console.log(preco);
     //validnado se o calculo do valor do produto esta sendo calculado corretamente com a quantidade adicionada.
+
+    carrinhoCompras(quantidade.value, produto, preco);
 }
 
 function limpar() {
