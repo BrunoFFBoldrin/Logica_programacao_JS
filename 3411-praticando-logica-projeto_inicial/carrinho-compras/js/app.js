@@ -15,6 +15,22 @@ function carrinhoCompras(quantidade,produto,preco) {
     document.getElementById('quantidade').value = 0;
 }
 
+function validaProduto(quantidade){
+    let saida = false;
+    while(!saida){
+      
+      if(quantidade <= 0 || isNaN(quantidade)){
+      alert('Quantidade invalida');
+      input = prompt('Digite outra quantidade');
+      quantidade = parseInt(input);
+      
+      quantidade = validaProduto(quantidade);
+    }
+    saida = true;
+    return quantidade;
+  }
+}
+
 function adicionar(){
 
     let quantidade = document.getElementById('quantidade');
@@ -28,6 +44,9 @@ function adicionar(){
     console.log(produto, quantidade.value);
     console.log(valorUnitario, nomeProduto);
     //validando se os valores foram recuperados corretamente
+    quantidade.value = (validaProduto(quantidade.value));
+
+    
 
     let preco = quantidade.value * valorUnitario;
     //recebe o valor do produto e multiplica pela quantidade adicionada.
