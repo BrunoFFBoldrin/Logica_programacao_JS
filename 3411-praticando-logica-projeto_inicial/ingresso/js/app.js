@@ -5,8 +5,13 @@ function comprar(){
 
     if(tipo.value =='pista'){
         comprarPista(quantidade);
+    }else if(tipo.value =='inferior'){
+        comprarInferior(quantidade);
+    }else{
+        comprarSuperior(quantidade);
     }
-     console.log(`Quantidade: ${quantidade} ,Tipo ${tipo.value}`);
+
+console.log(`Quantidade: ${quantidade} ,Tipo ${tipo.value}`);
 }
 
 function comprarPista(qtd){
@@ -21,10 +26,24 @@ if(qtd > ingresso){
 }
 
 function comprarInferior(qtd){
-let ingresso = document.getElementById('qtd-inferior');
-
+let ingresso = parseInt(document.getElementById('qtd-inferior').textContent);
+if(qtd > ingresso){
+    alert('Quantidade indisponivel para ingresso Inferior');
+}else{
+    alert('Parabéns, seu ingresso esta garantido');
+    ingresso = ingresso - qtd;
+    document.getElementById('qtd-inferior').textContent = ingresso;
+    
+}
 }
 
 function comprarSuperior(qtd){
-let ingresso = document.getElementById('qtd-superior');
+let ingresso = parseInt(document.getElementById('qtd-superior').textContent);
+if(qtd > ingresso){
+    alert('Quantidade indisponivel para ingresso Inferior');
+}else{
+    alert('Parabéns, seu ingresso esta garantido');
+    ingresso = ingresso - qtd;
+    document.getElementById('qtd-superior').textContent = ingresso;
+}
 }
