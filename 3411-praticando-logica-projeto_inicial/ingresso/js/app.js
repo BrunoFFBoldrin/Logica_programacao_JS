@@ -3,13 +3,15 @@ function comprar(){
     let quantidade = parseInt(document.getElementById('qtd').value);
     //receber elementos
 
-    if(tipo.value =='pista'){
-        comprarPista(quantidade);
-    }else if(tipo.value =='inferior'){
-        comprarInferior(quantidade);
-    }else{
-        comprarSuperior(quantidade);
-    }
+    if(quantidade <=0 || isNaN(quantidade)){
+    alert('Quantidade não pode ser menor ou igual a zero, corrija antes de prosseguir.')
+    }else if(tipo.value =='pista'){
+            comprarPista(quantidade);
+        }else if(tipo.value =='inferior'){
+            comprarInferior(quantidade);
+        }else{
+            comprarSuperior(quantidade);
+}
 
 console.log(`Quantidade: ${quantidade} ,Tipo ${tipo.value}`);
 }
